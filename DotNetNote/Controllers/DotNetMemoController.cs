@@ -24,5 +24,7 @@ namespace DotNetNote.Controllers
 
         [HttpGet]
         public IActionResult Reply() => View();
+
+        public IActionResult Comment() => View();
     }
 }

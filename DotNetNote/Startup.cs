@@ -62,9 +62,9 @@ namespace DotNetNote
                 //    name: "default",
                 //    pattern: "{controller=Home}/{action=Index}/{id?}");
                 //endpoints.MapRazorPages();
-                endpoints.MapControllers();
+                //endpoints.MapControllers();
                 endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/_Host");
+                //endpoints.MapFallbackToPage("/_Host");
             });
         }
     }
