@@ -56,5 +56,25 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="DotNetNote" />
+    <Folder Include="DotNetNote\Stored Procedures" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="DotNetNote\Notes.sql" />
+    <Build Include="DotNetNote\NoteComments.sql" />
+    <Build Include="DotNetNote\Stored Procedures\DNN_DeleteNote.sql" />
+    <Build Include="DotNetNote\Stored Procedures\DNN_GetCountNotes.sql" />
+    <Build Include="DotNetNote\Stored Procedures\DNN_ListNotes.sql" />
+    <Build Include="DotNetNote\Stored Procedures\DNN_ModifyNote.sql" />
+    <Build Include="DotNetNote\Stored Procedures\DNN_ReplyNote.sql" />
+    <Build Include="DotNetNote\Stored Procedures\DNN_SearchNoteCount.sql" />
+    <Build Include="DotNetNote\Stored Procedures\DNN_SearchNotes.sql" />
+    <Build Include="DotNetNote\Stored Procedures\DNN_ViewNote.sql" />
+    <Build Include="DotNetNote\Stored Procedures\DNN_WriteNote.sql" />
+    <Build Include="DotNetNote\Stored Procedures\NotesList.sql" />
+    <Build Include="DotNetNote\Stored Procedures\NotesSearchList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DotNetNote.Database.publish.xml" />
   </ItemGroup>
 </Project>
