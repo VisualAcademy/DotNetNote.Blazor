@@ -38,7 +38,7 @@ namespace DotNetNote
             services.AddControllersWithViews(); // MVC 3.1
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<ApplicationUser>>();
             services.AddSingleton<WeatherForecastService>();
 
             //[!] Configuration: JSON 파일의 데이터를 POCO 클래스에 주입
@@ -151,13 +151,13 @@ namespace DotNetNote
                 }
 
                 //[2] Users
-                var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 //[2][1] Administrator
                 // ('Administrator', '관리자', 'User', '응용 프로그램을 총 관리하는 사용자 계정')
-                IdentityUser administrator = await userManager.FindByEmailAsync($"administrator@{domainName}");
+                ApplicationUser administrator = await userManager.FindByEmailAsync($"administrator@{domainName}");
                 if (administrator == null)
                 {
-                    administrator = new IdentityUser()
+                    administrator = new ApplicationUser()
                     {
                         UserName = $"administrator@{domainName}",
                         Email = $"administrator@{domainName}",
@@ -168,10 +168,10 @@ namespace DotNetNote
 
                 //[2][2] Guest
                 // ('Guest', '게스트 사용자', 'User', '게스트 사용자 계정')
-                IdentityUser guest = await userManager.FindByEmailAsync($"guest@{domainName}");
+                ApplicationUser guest = await userManager.FindByEmailAsync($"guest@{domainName}");
                 if (guest == null)
                 {
-                    guest = new IdentityUser()
+                    guest = new ApplicationUser()
                     {
                         UserName = "Guest",
                         Email = $"guest@{domainName}",
@@ -181,10 +181,10 @@ namespace DotNetNote
 
                 //[2][3] Anonymous
                 // ('Anonymous', '익명 사용자', 'User', '익명 사용자 계정')
-                IdentityUser anonymous = await userManager.FindByEmailAsync($"anonymous@{domainName}");
+                ApplicationUser anonymous = await userManager.FindByEmailAsync($"anonymous@{domainName}");
                 if (anonymous == null)
                 {
-                    anonymous = new IdentityUser()
+                    anonymous = new ApplicationUser()
                     {
                         UserName = "Anonymous",
                         Email = $"anonymous@{domainName}",
@@ -194,10 +194,10 @@ namespace DotNetNote
 
                 //[2][4] User
                 // ('User', '일반사용자', 'User', '응용 프로그램에 로그인할 수 있는 사용자')
-                IdentityUser user = await userManager.FindByEmailAsync($"user@{domainName}");
+                ApplicationUser user = await userManager.FindByEmailAsync($"user@{domainName}");
                 if (user == null)
                 {
-                    user = new IdentityUser()
+                    user = new ApplicationUser()
                     {
                         UserName = $"user@{domainName}",
                         Email = $"user@{domainName}",
@@ -208,10 +208,10 @@ namespace DotNetNote
 
                 //[2][5] Manager
                 // ('User', '일반사용자', 'User', '응용 프로그램에 로그인할 수 있는 사용자')
-                IdentityUser manager = await userManager.FindByEmailAsync($"manager@{domainName}");
+                ApplicationUser manager = await userManager.FindByEmailAsync($"manager@{domainName}");
                 if (manager == null)
                 {
-                    manager = new IdentityUser()
+                    manager = new ApplicationUser()
                     {
                         UserName = $"manager@{domainName}",
                         Email = $"manager@{domainName}",

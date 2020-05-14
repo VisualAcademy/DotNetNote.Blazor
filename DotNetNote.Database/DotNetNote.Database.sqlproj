@@ -58,6 +58,7 @@
     <Folder Include="Properties" />
     <Folder Include="DotNetNote" />
     <Folder Include="DotNetNote\Stored Procedures" />
+    <Folder Include="Identity" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="DotNetNote\Notes.sql" />
@@ -73,6 +74,14 @@
     <Build Include="DotNetNote\Stored Procedures\DNN_WriteNote.sql" />
     <Build Include="DotNetNote\Stored Procedures\NotesList.sql" />
     <Build Include="DotNetNote\Stored Procedures\NotesSearchList.sql" />
+    <Build Include="Identity\AspNetUserTokens.sql" />
+    <Build Include="Identity\__EFMigrationsHistory.sql" />
+    <Build Include="Identity\AspNetRoleClaims.sql" />
+    <Build Include="Identity\AspNetRoles.sql" />
+    <Build Include="Identity\AspNetUserClaims.sql" />
+    <Build Include="Identity\AspNetUserLogins.sql" />
+    <Build Include="Identity\AspNetUserRoles.sql" />
+    <Build Include="Identity\AspNetUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DotNetNote.Database.publish.xml" />
