@@ -33,7 +33,8 @@ namespace DotNetNote
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            //services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
             services.AddControllersWithViews(); // MVC 3.1
             services.AddRazorPages();
             services.AddServerSideBlazor();
@@ -134,7 +135,7 @@ namespace DotNetNote
                 string domainName = "a.com";
 
                 //[1] Groups(Roles)
-                var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
                 //[1][1] ('Administrators', '관리자 그룹', 'Group', '응용 프로그램을 총 관리하는 관리 그룹 계정')
                 //[1][2] ('Everyone', '전체 사용자 그룹', 'Group', '응용 프로그램을 사용하는 모든 사용자 그룹 계정')
                 //[1][3] ('Users', '일반 사용자 그룹', 'Group', '일반 사용자 그룹 계정')
@@ -145,7 +146,7 @@ namespace DotNetNote
                     var roleExist = await roleManager.RoleExistsAsync(roleName);
                     if (!roleExist)
                     {
-                        await roleManager.CreateAsync(new IdentityRole(roleName)); // 빌트인 그룹 생성
+                        await roleManager.CreateAsync(new ApplicationRole { Name = roleName, NormalizedName = roleName.ToUpper(), Description = "" }); // 빌트인 그룹 생성
                     }
                 }
 
